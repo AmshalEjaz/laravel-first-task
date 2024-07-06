@@ -54,6 +54,7 @@
                         <ul>
                             <li><a href="{{URL::to('/')}}">Company</a></li>
                             <li><a href="{{URL::to('/employee')}}">Employee</a></li>
+                            <li><a href="{{ route('student.index') }}">Student</a></li>
                             
                             
                         </ul>

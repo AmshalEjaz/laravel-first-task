@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::post('insertData',[IndexController::class, 'insertData'])->name('insertDa
 Route::get('delete/{id}',[IndexController::class, 'delete'])->name('delete');
 Route::get('updateEmployee/{id}',[IndexController::class, 'edit'])->name('edit');
 Route::post('/update',[IndexController::class, 'update'])->name('update');
+
+Route::resource('student', StudentController::class);
+
+// Route::get('amshal.udefine',[AmshalController::class, 'udefine']);
 
 // Route::get('/', function () {
 //     return view('welcome');
