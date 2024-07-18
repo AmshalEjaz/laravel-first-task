@@ -19,36 +19,24 @@
 
                     </div>
                     @endif
-                        <form action="{{ URL::to('update') }}" method="post" enctype="multipart/form-data">
+                     <h3>Students</h3>
+                       <a href="{{ url('student') }}" class="btn btn-primary btn-sm mb-3">Back</a>
+
+                        <form action="{{ url('student/' .$student->id) }}" method="POST" >
                         @csrf
+                       @method('PUT')
                             <div class="row">
-                                
-                        <input type="hidden"  name="id" value="{{$emp->id}}">
-                                
                                 <div class="col-lg-6">
-                                    <input type="text" placeholder="First Name" name="fname" value="{{$emp->fname}}">
+                                    <input type="text" placeholder="Name" name="name" value="{{$student->name}}">
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" placeholder="Last Name" name="lname" value="{{$emp->lname}}">
-                                </div>
-                               
-                                    
-                               
-                                 <div class="col-lg-6">
-                                     <select name="company_id" class="form-control" required>
-                                    @foreach($com as $company)
-                                    <option value="{{ $company->id }}" {{ $emp->company_id == $company->id ? 'selected' : '' }}>
-                                    {{ $company->name }}
-                                    </option>
-                                    @endforeach
-                                      </select>
-                                    
-                                    </div>
-                                <div class="col-lg-6">
-                                    <input type="text" placeholder="Email" name="email" value="{{$emp->email}}">
+                                    <input type="text" placeholder="Course" name="course" value="{{$student->course}}">
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" placeholder="Phone" name="phone" value="{{$emp->phone}}">
+                                    <input type="text" placeholder="Section" name="section" value="{{$student->section}}">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" placeholder="Email" name="email" value="{{$student->email}}">
                                 </div>
                                 <div class="col-lg-">
                                    
@@ -56,13 +44,12 @@
                                 </div>
                             </div>
                         </form>
-                       <div class="table-responsive">
-  
-</div>
+
+
 
                     </div>
                 </div>
             </div>
         </div>
     </section>
- @endsection
+@endsection

@@ -19,24 +19,32 @@
 
                     </div>
                     @endif
-                        <form action="{{ URL::to('updatecompany') }}" method="post" enctype="multipart/form-data">
+
+                    @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+                     <h3>Students</h3>
+                       <a href="{{ url('student') }}" class="btn btn-primary btn-sm">Back</a>
+                        <form action="{{url('student')}}" method="post" enctype="multipart/form-data">
                         @csrf
                             <div class="row">
-                                
-                                    <input type="hidden"  name="id" value="{{$com->id}}">
-                                
                                 <div class="col-lg-6">
-                                    <input type="text" placeholder="Name" name="name" value="{{$com->name}}">
+                                    <input type="text" placeholder="Name" name="name">
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" placeholder="Email" name="email" value="{{$com->email}}">
+                                    <input type="text" placeholder="Course" name="course">
                                 </div>
-                                 <div class="col-lg-6">
-                                    <input type="file" placeholder="logo" name="logo">
-                                    
-                                    </div>
                                 <div class="col-lg-6">
-                                    <input type="text" placeholder="website" name="website" value="{{$com->website}}">
+                                    <input type="text" placeholder="Section" name="section">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" placeholder="Email" name="email">
                                 </div>
                                 <div class="col-lg-">
                                    
@@ -44,13 +52,12 @@
                                 </div>
                             </div>
                         </form>
-                       <div class="table-responsive">
-  
-</div>
+
+
 
                     </div>
                 </div>
             </div>
         </div>
     </section>
- @endsection
+@endsection
