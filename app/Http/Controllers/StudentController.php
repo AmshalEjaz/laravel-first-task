@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -11,7 +11,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('student.index');
+        $student=Student::all();
+        return view('student.index',compact('student'));
     }
 
     /**
@@ -25,9 +26,22 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated =$request->validate([
+        'name' => 'required|unique:students|max:255',
+        'course' => 'required',
+        'section' => 'required',
+        'email' => 'required|email',
+        ]);
+        
+        $std=new Student();
+        $std->name =$validated['name'];
+        $std->course =$validated['course'];
+        $std->section =$validated['section'];
+        $std->email =$validated['email'];
+        $std->save();
+        return redirect('student')->with('success','Insert Data Successfully');
     }
 
     /**
@@ -35,7 +49,8 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $std=Student::find($id);
+        return view('student.show',compact('std'));
     }
 
     /**
@@ -43,7 +58,8 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $student=Student::find($id);
+        return view('student.edit',compact('student'));
     }
 
     /**
@@ -51,7 +67,13 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $std=Student::find($id);
+        $std->name =$request->input('name');
+        $std->course =$request->input('course');
+        $std->section =$request->input('section');
+        $std->email =$request->input('email');
+        $std->update();
+        return redirect('student')->with('success','Update Data Successfully');
     }
 
     /**
@@ -59,6 +81,8 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $student=Student::find($id);
+        $student->delete();
+        return redirect('student')->with('success','data deleted successfully');
     }
 }

@@ -2,11 +2,7 @@
 <html lang="zxx">
 
 <head>
-    <!-- <meta charset="UTF-8">
-    <meta name="description" content="Male_Fashion Template">
-    <meta name="keywords" content="Male_Fashion, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    
     <title></title>
 
     <!-- Google Font -->
@@ -26,43 +22,45 @@
 
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
+    <!-- <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div> -->
 
-    <!-- Offcanvas Menu Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="offcanvas-menu-wrapper">
+    
         
     </div>
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
     <header class="header">
-        <div class="header__top">
-            <div class="container">
+       
                 
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3">
-                   
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <nav class="header__menu mobile-menu">
+                
+                    <!-- <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="{{URL::to('/')}}">Company</a></li>
-                            <li><a href="{{URL::to('/employee')}}">Employee</a></li>
-                            <li><a href="{{ route('student.index') }}">Student</a></li>
+            <li><a href="{{URL::to('company')}}">Company</a></li>
+            <li><a href="{{URL::to('employee')}}">Employee</a></li>
+            <li><a href="{{URL::to('dashboard')}}">Dashboard</a></li>
+    @auth
+    <ul>
+        @if(auth()->user()->hasRole('manager'))
+            <li><a href="{{ URL::to('company') }}" class="text-blue-500 hover:text-blue-950">Company</a></li>
+            <li><a href="{{ URL::to('employee') }}" class="text-blue-500 hover:text-blue-950">Employee</a></li>
+        @endif
+
+        @if(auth()->user()->hasRole('employee'))
+            <li><a href="{{ URL::to('dashboard') }}" class="text-blue-500 hover:text-blue-950">Dashboard</a></li>
+        @endif
+
+        @if(auth()->user()->hasRole('manager') || auth()->user()->hasRole('employee'))
+            <li><a href="{{ URL::to('dashboard') }}" class="text-blue-500 hover:text-blue-950">Dashboard</a></li>
+        @endif
+    </ul>
+    @endauth -->
+                            <!-- <li><a href="{{ route('student.index') }}">Student</a></li> -->
                             
                             
-                        </ul>
-                    </nav>
-                </div>
-               
-            </div>
-            <div class="canvas__open"><i class="fa fa-bars"></i></div>
-        </div>
+                       
+        
     </header>
     <!-- Header Section End -->
